@@ -104,16 +104,18 @@ Most clients accept the same `mcpServers` shape shown for Cursor. Check your cli
 |---|---|
 | `prism_review_contract` | Send a lease, mortgage, insurance policy, HOA document or commercial lease as exactly one of `url`, `text` or `fileBase64` (a PDF or photo, up to 25MB). Returns a `contractId` at once; reading takes about a minute. |
 | `prism_get_contract` | One contract's status and results by `contractId`: every fact if it is paid for, otherwise the free 3-fact preview. Never spends credits. |
-| `prism_unlock_contract` | Every deadline and risk for a contract that has finished reading. Spends 1 credit ($0.50) unless it is already paid for. |
+| `prism_unlock_contract` | Every deadline and risk for a contract that has finished reading. Spends 1 credit ($0.50) unless it is already paid for. With no credits it returns the preview with `code: "insufficient_credits"`. |
 | `prism_upcoming_deadlines` | Open deadlines across every contract in the account, soonest first, within `withinDays` (default 90). |
 | `prism_list_contracts` | Every contract in the account, newest first, with its status and whether full results are unlocked. Paginated. |
-| `prism_get_account` | Credits remaining, prices, whether an Unlimited subscription covers everything, and contracts added this month. |
-| `prism_buy_credits` | Ways to buy 20-2000 credits at $0.50 each: a Stripe checkout link for your user and, when available, an MPP purchase URL. It cannot pay. |
-| `prism_send_feedback` | Tell the Prism team a result was wrong, something was missing, or what price would work. A person reads every message. Free. |
+| `prism_get_account` | Credits remaining, prices, whether an Unlimited subscription covers everything, and contracts added this month. `creditStatus` is `ok`, `low` (2 or fewer left), `empty` or `unlimited`, and `purchaseOptions` says whether buying needs your user (a checkout link) or the agent can pay itself. |
+| `prism_buy_credits` | Ways to buy 20-2000 credits at $0.50 each: a Stripe checkout link for your user and, when available, an MPP purchase URL the agent can pay itself. |
+| `prism_send_feedback` | Tell the Prism team a result was wrong, something was missing, or what price would work. A person reads every message. Free. A wrong result the team reproduces earns the account 10 free credits. |
 
 Full input and output schemas are in the [server card](https://prism.parad1gm.com/.well-known/mcp/server-card.json).
 
-A typical run: call `prism_review_contract`, wait about a minute, then call `prism_get_contract`. If the contract is not paid for, `prism_unlock_contract` spends one credit for the full results. When credits run out, `prism_buy_credits` returns a checkout link to hand to your user. Sending the same document again returns the same contract.
+A typical run: call `prism_review_contract`, wait about a minute, then call `prism_get_contract`. If the contract is not paid for, `prism_unlock_contract` spends one credit for the full results. Sending the same document again returns the same contract.
+
+**Running out of credits without surprises.** Check `creditStatus` from `prism_get_account` before a batch. When it is `low` or `empty` -- or an unlock returns `code: "insufficient_credits"` -- call `prism_buy_credits`. Any connected agent may call it on its own: it returns a checkout link for your user and, when `purchaseOptions.agentPayment` is true, a purchase URL the agent can pay itself over the Machine Payments Protocol (MPP). Only the checkout link needs a person.
 
 ## A2A
 
@@ -131,8 +133,9 @@ A2A uses the same OAuth server and tokens as the MCP server, and a Prism API key
 - $0.50 per contract (1 credit), charged once, when its full results are first delivered.
 - Every new account starts with 3 free credits.
 - Previews, re-reads, and documents Prism cannot read are free. The same document is never charged twice.
-- Credits are bought 20 or more at a time (minimum $10). Your agent can hand you a checkout link; it cannot pay on its own.
+- Credits are bought 20 or more at a time (minimum $10). Your agent can hand you a checkout link, or pay itself with an MPP wallet when that option is available.
 - Contracts an agent unlocks get the same email reminders as contracts you add yourself: 90, 30 and 7 days before each deadline.
+- Report a result Prism got wrong with `prism_send_feedback` (the contract and the date or clause you expected). When the team reproduces it, the account gets 10 free credits.
 
 **People** (on the website)
 
