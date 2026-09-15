@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.parad1gm/prism",
+  "description": "Every deadline in a lease, mortgage or policy: date, consequence, source quote. $0.50, 3 free.",
+  "title": "Prism",
+  "version": "1.0.1",
+  "websiteUrl": "https://prism.parad1gm.com/agents",
+  "repository": {
+    "url": "https://github.com/Built-AI/prism-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://prism.parad1gm.com/api/prism-mcp"
+    }
+  ]
+}

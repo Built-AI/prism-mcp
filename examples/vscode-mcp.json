@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "prism": {
+      "type": "http",
+      "url": "https://prism.parad1gm.com/api/prism-mcp"
+    }
+  }
+}
