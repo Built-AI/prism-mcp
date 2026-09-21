@@ -1,10 +1,10 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.parad1gm/prism",
-  "description": "Every deadline in a lease, mortgage or policy: date, consequence, source quote. $0.50, 3 free.",
-  "title": "Prism",
-  "version": "1.0.1",
-  "websiteUrl": "https://prism.parad1gm.com/agents",
+  "description": "Critical dates and deadlines in leases, loans, policies, HOA docs and contracts, with the clause.",
+  "title": "Prism by Parad1gm: Contract Deadlines and Critical Dates",
+  "version": "1.0.2",
+  "websiteUrl": "https://prism.parad1gm.com/agents?utm_source=mcp-registry&utm_medium=listing",
   "repository": {
     "url": "https://github.com/Built-AI/prism-mcp",
     "source": "github"
