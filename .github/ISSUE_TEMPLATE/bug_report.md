@@ -1,12 +1,12 @@
 ---
 name: Bug report
-about: A problem connecting to or using the Prism MCP server
+about: A problem connecting to or using the Revalidata MCP server
 title: ""
 labels: bug
 ---
 
 Do not include contract contents, personal details, API keys or OAuth tokens.
-For account, billing or data requests, email support@parad1gm.com instead.
+For account, billing or data requests, email support@revalidata.com instead.
 
 **Client and version**
 (e.g. Claude Code 2.x, Cursor, VS Code)

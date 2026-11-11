@@ -1,18 +1,18 @@
 # Claude Code
 
-Add Prism (OAuth sign-in on first use):
+Add Revalidata (OAuth sign-in on first use):
 
 ```sh
-claude mcp add --transport http prism https://prism.parad1gm.com/api/prism-mcp
+claude mcp add --transport http revalidata https://revalidata.com/mcp
 ```
 
-Then run `/mcp` inside Claude Code, select `prism`, and sign in to your Prism account.
+Then run `/mcp` inside Claude Code, select `revalidata`, and sign in to your Revalidata account.
 
-Add Prism with an API key instead (create one on the [Billing page](https://prism.parad1gm.com/prism/billing)):
+Add Revalidata with an API key instead (create one on the [Billing page](https://revalidata.com/prism/billing) after you sign in):
 
 ```sh
-claude mcp add --transport http prism https://prism.parad1gm.com/api/prism-mcp \
-  --header "Authorization: Bearer YOUR_PRISM_KEY"
+claude mcp add --transport http revalidata https://revalidata.com/mcp \
+  --header "Authorization: Bearer YOUR_REVALIDATA_KEY"
 ```
 
 Check it is connected:
@@ -24,5 +24,7 @@ claude mcp list
 Remove it:
 
 ```sh
-claude mcp remove prism
+claude mcp remove revalidata
 ```
+
+Set up earlier under the name `prism` at `https://prism.parad1gm.com/api/prism-mcp`? That still works; there is nothing to change.
