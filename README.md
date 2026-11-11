@@ -162,7 +162,7 @@ Read the full [Privacy policy](https://revalidata.com/privacy) and [Terms](https
 
 ## Support
 
-Email support@revalidata.com. For problems connecting a client, you can also [open an issue](https://github.com/Built-AI/prism-mcp/issues/new/choose). Do not post contract contents, personal details, API keys or tokens in an issue.
+Email support@revalidata.com. For problems connecting a client, you can also [open an issue](https://github.com/Built-AI/revalidata-mcp/issues/new/choose). Do not post contract contents, personal details, API keys or tokens in an issue.
 
 ## About this repository
 
