@@ -1,8 +1,8 @@
 {
   "servers": {
-    "prism": {
+    "revalidata": {
       "type": "http",
-      "url": "https://prism.parad1gm.com/api/prism-mcp"
+      "url": "https://revalidata.com/mcp"
     }
   }
 }

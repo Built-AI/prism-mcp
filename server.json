@@ -1,10 +1,10 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "com.parad1gm/prism",
-  "description": "Every deadline in a lease, mortgage or policy: date, consequence, source quote. $0.50, 3 free.",
-  "title": "Prism",
-  "version": "1.0.1",
-  "websiteUrl": "https://prism.parad1gm.com/agents",
+  "name": "com.revalidata/contracts",
+  "description": "Critical dates found in leases, loans, policies, HOA docs, contracts, clause if known. By Built AI.",
+  "title": "Revalidata: Contract Deadlines and Critical Dates",
+  "version": "1.0.0",
+  "websiteUrl": "https://revalidata.com/agents?utm_source=mcp-registry&utm_medium=listing",
   "repository": {
     "url": "https://github.com/Built-AI/prism-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://prism.parad1gm.com/api/prism-mcp"
+      "url": "https://revalidata.com/mcp"
     }
   ]
 }
